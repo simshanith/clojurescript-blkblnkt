@@ -1,6 +1,7 @@
 (defproject sim-cljs "0.1.0-SNAPSHOT"
   :description "Test development environment for Clojure + ClojureScript stack"
   :url "http://simloovoo.com"
+  :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [aleph "0.3.0-beta11"]
                  [ring "1.1.8"]
