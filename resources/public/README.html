@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+"http://www.w3.org/TR/2001/REC-MathML2-20010221/dtd/xhtml-math11-f.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>README</title>
+
+	<meta name="format" content="complete"/>
+  <style type="text/css">
+/* +++ master +++ */
+/* html elements */
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    overflow:hidden;
+    background-color: #f2f2f2;
+    color: #3c3c3c;
+    font-size: 62.5%;
+    -webkit-font-smoothing: antialiased;
+}
+a {
+    color: #308bd8;
+    text-decoration:none;
+}
+a:hover {
+    text-decoration: underline;
+}
+/* headings */
+h1, h2 {
+    line-height:1.2em;
+    margin-top:32px;
+    margin-bottom:12px;
+}
+h1:first-child {
+    margin-top:0;
+}
+h3, h4, h5, h6 {
+    margin-top:12px;
+    margin-bottom:6px;
+}
+h5, h6 {
+    font-size:0.9em;
+    line-height:1.0em;
+    margin-bottom:0;
+}
+/* end of headings */
+p {
+    margin:0 0 24px 0;
+}
+p:last-child {
+    margin-bottom:0;
+}
+hr {
+    width: 100%;
+    margin: 3em auto;
+    border: 0;
+    color: #eee;
+    background-color: #ccc;
+    height: 1px;
+    -webkit-box-shadow:0px 1px 0px rgba(255, 255, 255, 0.75);
+}
+/* lists */
+ol {
+    list-style: outside decimal;
+}
+ul {
+    list-style: outside disc;
+}
+ol, ul {
+    padding-left:0;
+    margin-bottom:24px;
+}
+ol li {
+    margin-bottom:16px;
+    margin-left:28px;
+}
+ul li {
+    margin-bottom:16px;
+    margin-left:16px;
+}
+li:last-child {
+    margin-bottom:0;
+}
+li > p {
+    margin-bottom:12px;
+}
+li > ol, li > ul {
+    margin-top: 16px !important;
+    padding-left:16px;
+}
+dl {
+    margin-bottom:24px;
+}
+dl dt {
+    font-weight:bold;
+    margin-bottom:8px;
+}
+dl dd {
+    margin-left:0;
+    margin-bottom:12px;
+}
+dl dd:last-child, dl:last-child {
+    margin-bottom:0;
+}
+/* end of lists */
+pre {
+    white-space: pre-wrap;
+    width: 96%;
+    margin-bottom: 24px;
+    overflow: hidden;
+    padding: 3px 10px;
+    -webkit-border-radius: 3px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+}
+code {
+    white-space: nowrap;
+    font-size: 1.1em;
+    padding: 2px;
+    -webkit-border-radius: 3px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+}
+pre code {
+    white-space: pre-wrap;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    -webkit-border-radius: 0;
+}
+blockquote {
+    margin-left: 0;
+    margin-right: auto;
+    width: 96%;
+    padding: 0 10px;
+    border-left: 3px solid #ddd;
+    color: #777;
+}
+table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-spacing: 0;
+}
+table th {
+    padding: 3px 10px;
+    background-color: #eee;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+table tr {
+}
+table td {
+    padding: 3px 10px;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+figure {
+    display: block;
+    text-align: center;
+}
+img {
+    display: block;
+    text-align: center;
+    border: none;
+    margin: 1em auto;
+    max-width: 100%;
+}
+figcaption {
+    font-size: 0.8em;
+    font-style: italic;
+}
+mark {
+    background: #fefec0;
+    padding:1px 3px;
+}
+
+/* unique elements */
+
+#wrapper {
+    position: fixed;
+    width: 99.9%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-size: 1.0em;
+}
+#content {
+    width: 610px;
+    margin: 0 auto 0 auto;
+    padding: 30px 0 30px 0;
+    font-family: 'Baskerville', Palatino, Georgia, serif;
+    font-size: 1.7em;
+    line-height: 1.400000em;
+}
+
+#wrapper::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+    -webkit-transition: all .45s ease-in;
+    position: relative;
+}
+#wrapper::-webkit-scrollbar-button:start:decrement, #wrapper::-webkit-scrollbar-button:end:increment {
+    height: 0px;
+    display: block;
+    background-color: transparent;
+}
+#wrapper::-webkit-scrollbar-track-piece {
+    background-color:
+    transparent;
+    -webkit-border-radius: 6px;
+}
+#wrapper::-webkit-scrollbar-thumb:vertical {
+    height: 50px;
+    background-color: #c8c8c8;
+    -webkit-border-radius: 6px;
+    -webkit-transition: all .45s ease-in;
+}
+
+/* classes */
+
+.markdowncitation {
+}
+.footnote {
+    font-size: 0.8em;
+    vertical-align: super;
+}
+.footnotes ol {
+    font-weight: bold;
+}
+.footnotes ol li p {
+    font-weight: normal;
+}
+
+/* custom formatting classes */
+
+.shadow {
+    -webkit-box-shadow: 0 2px 4px #999;
+}
+
+.source {
+    text-align: center;
+    font-size: 0.8em;
+    color: #777;
+    margin: -40px;
+}
+/* --- master --- */
+/* +++ export overrides +++ */
+#wrapper {
+    width: 99.9%;
+}
+#content {
+    width: 610px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Mobile support */
+@media only screen and (max-device-width:1024px) {
+    html {
+        overflow: auto;
+    }
+
+    #wrapper {
+        overflow: auto;
+        position: relative;
+    }
+}
+/* --- export overrides --- */
+/* +++ theme +++ */
+/* html elements */
+
+body {
+    background-color: #1a1a1a;
+    color: #bebebe;
+}
+a {
+    color: #308bd8;
+}
+hr {
+    color: #666;
+    background-color: #666;
+    -webkit-box-shadow: none;
+}
+pre {
+    background-color: #222;
+    border-color: #3c3c3c;
+}
+code {
+    background-color: #222;
+    border-color: #3c3c3c;
+}
+blockquote {
+    border-color: #333;
+    color: #999;
+}
+table {
+    border-color: #3c3c3c;
+}
+table th {
+    background-color: #222;
+    border-color: #3c3c3c;
+}
+table td {
+    border-color: #3c3c3c;
+}
+mark {
+    background: #bc990b;
+    color:#000;
+}
+
+/* unique elements */
+
+#wrapper::-webkit-scrollbar-thumb:vertical {
+    background-color: #525252;
+}
+#top-fader {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(26,26,26,1)), to(rgba(26,26,26,0)));
+}
+#bottom-fader {
+    background: -webkit-gradient(linear, left bottom, left top, from(rgba(26,26,26,1)), to(rgba(26,26,26,0)));
+}
+
+/* custom formatting classes */
+
+.shadow {
+    -webkit-box-shadow: 0 2px 4px #000;
+}
+/* --- theme --- */
+/* Printing support (Print and export to PDF).
+ * Override all printing colors to match the Light theme.
+ */
+@media print {
+    img, pre, blockquote, table, figure {
+        page-break-inside: avoid;
+    }
+    body {
+        background-color:#fff;
+    }
+    #wrapper {
+        position: static;
+        overflow: hidden;
+        color: #3c3c3c;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .footnotes {
+        page-break-before: always;
+    }
+    #content {
+        margin: 0 auto;
+        padding: 0;
+        width: 98%;
+    }
+    #top-fader, #bottom-fader {
+        display: none;
+    }
+    a {
+        color: #3c3c3c;
+    }
+    hr {
+        color:#ddd;
+        background-color:#ddd;
+        -webkit-box-shadow:0px 1px 0px #ddd;
+    }
+    pre {
+        background-color:transparent;
+        border: 1px solid #ddd;
+    }
+    code {
+        background-color:transparent;
+        border: 1px solid #ddd;
+    }
+    blockquote {
+        border-left: 3px solid #ddd;
+        color: #3c3c3c;
+    }
+    table {
+        border-bottom: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+    }
+    table th {
+        background-color:transparent;
+        border-top: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+    }
+    table td {
+        border-top: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+    }
+    mark {
+        background:transparent;
+        color: #3c3c3c;
+    }
+    .source {
+        color: #3c3c3c;
+    }
+}
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="content">
+<h1>Clojure + ClojureScript Overview</h1>
+
+<p>This is an example Clojure web app that serves compiled ClojureScript, bringing a modern lisp to both server &amp; browser.</p>
+
+<h4><em>“Science without Philosophy is blind&#8230;”</em></h4>
+
+<p>Clojure builds useful abstractions around discrete problemspaces. This design philosophy allows for highly modular components that provide utility for many programming projects. These components are easily distributed as projects themselves, allowing open source communities to build on top of and within each library.</p>
+
+<h4><em>“&#8230;Philosophy without Science is empty.”</em></h4>
+
+<p>Web servers have long been established as a discrete “problemspace” in modern programming. HTTP &amp; other internet protocols can be approached with various architectures. Python’s WSGI &amp; Ruby’s Rack inspired the predominant Clojure web applications library, Ring. These libraries “abstract the details of HTTP into simple, unified APIs,” to paraphrase the <a href="https://github.com/ring-clojure/ring">Ring documentation</a>.</p>
+
+<h2>Useful Abstractions</h2>
+
+<h3><a href="https://github.com/ring-clojure/ring/wiki/Concepts">Ring: Fundamental Building Block</a></h3>
+
+<p>An HTTP server is fundamentally functional in nature: <code>Request-&gt;*Server Magic*-&gt;Response</code>. Ring handles the server magic with an abstraction in the form of a Clojure function called a <code>Handler</code>. Handlers accept Clojure maps representing an HTTP request, apply transformations as needed, and return a Clojure map representing an HTTP response. This uniform behavior allows for composable middleware with higher-level functions wrapping handlers with added functionality.</p>
+
+<h3><a href="https://github.com/weavejester/compojure/wiki/Routes-In-Detail">Compojure: Super simple routing</a></h3>
+
+<p>Compojure provides a RESTful approach to request routing and some useful “threaded” Ring middleware handlers for generating a standard web stack. Compojure also offers the <code>Renderable</code> protocol, which allows easy conversion from different data structures to the appropriate HTTP responses. Compojure abstracts away much of the usual boilerplate in web application development, handling the “Controller” bit of MVC architecture very well.</p>
+
+<h3><a href="https://github.com/ztellman/aleph/wiki/HTTP">Aleph: Super simple <em>asynchronous</em> routing</a></h3>
+
+<p>Aleph follows the Ring API, but allows the Request &amp; the Response to be “decoupled.” Web apps built with Compojure behave <em>synchronously</em>, while Aleph allows for <em>asynchronous</em> behavior. You can use Ring/Compojure handlers to create the basic structure of the site, then wrap it up with async handlers as needed with Aleph. Example uses of async handlers are WebSockets, chunked responses, HTTP response dependent on a server-side HTTP request, and TCP Client/Server communication.</p>
+
+<h3><a href="https://github.com/cemerick/piggieback">Piggieback: ClojureScript REPL</a></h3>
+
+<p>Piggieback lets me connect a Clojure nREPL to a ClojureScript environment, such as Rhino or the browser (<strong><em>!!!</em></strong>). With the right code in place on the server and the client, I can have a live link to both. The potential power is intoxicating. Consider the following&#8230; You’re about to wrap up a new feature of your app. You deploy your new code, see that it’s live, jack into your server’s REPL and connect to the browser REPL. You start chatting with some nerdy friends about your latest ClojureScript exploits, and they browse away, looking at your modest web project. You go back to the REPL, and with one command, send all active connections to your app’s latest addition. While this is certainly possible with services such as JSConsole already, Piggieback lets you do it over your own server and in ClojureScript.</p>
+
+<h3><a href="https://github.com/cgrand/enlive">Enlive: HTML templating, transformed</a></h3>
+
+<p>Enlive is my favorite templating solution, hands down. Instead of forcing some special templating syntax, Enlive takes HTML and produces HTML. Create a static page with placeholders and Lorem Ipsum, and let Enlive replace it with dynamic content in your app. Enlive recognizes both CSS selectors and XPath, and has advanced transformations for wrangling structured data into structured HTML.</p>
+
+<h2>ClojureScript and Google Closure Tools</h2>
+
+<p>ClojureScript is built upon <a href="https://developers.google.com/closure/">Google Closure Tools</a>, implemented using the <a href="https://developers.google.com/closure/library/">Closure Library</a>, and compiled with the <a href="https://developers.google.com/closure/compiler/">Closure Compiler</a>. This provides a surprisingly effective dependency managment solution, well suited for programming with modular components. Google’s rich experience applications such as Search, Gmail, Maps, Docs, Google+, and many others are built with the Closure Library. </p>
+
+<p>However, it is a totalistic framework: using it alongside traditional, relatively lightweight libraries such as jQuery and Backbone is difficult &amp; cumbersome, not to mention redundant in a network-gobbling way. Google has their own way of doing things, and to adopt Closure in part, you need to swallow it whole. That said, once transitioned to the Closure way, you may have a deeper understanding of how browsers process the DOM &amp; evaluate your scripts.</p>
+
+<p>The Google Closure Tools are Java-based, and Google Closure Javascript is a big step toward Java from Vanilla JS. Writing Javascript that follows Google Closure convention involves a lot of boilerplate much like Java.</p>
+
+<p><a href="https://github.com/clojure/clojurescript">ClojureScript</a>, thankfully, leverages Clojure’s powerful abstractions to reduce the need for boilerplate. The consistent language abstractions keep source files small and familiar, crucial when applications grow in complexity. ClojureScript is best suited for rich experience applications, allowing the developer to harness the full power of Google Closure’s engine with clear, concise Lisp.</p>
+
+<p><em>Shane Daniel</em></p>
+    </div>
+  </div> <!-- End wrapper -->
+</body>
+</html>
