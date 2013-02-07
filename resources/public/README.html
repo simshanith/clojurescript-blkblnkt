@@ -441,7 +441,11 @@ mark {
 
 <h3><a href="https://github.com/cemerick/piggieback">Piggieback: ClojureScript REPL</a></h3>
 
-<p>Piggieback lets me connect a Clojure nREPL to a ClojureScript environment, such as Rhino or the browser (<strong><em>!!!</em></strong>). With the right code in place on the server and the client, I can have a live link to both. The potential power is intoxicating. Consider the following&#8230; You’re about to wrap up a new feature of your app. You deploy your new code, see that it’s live, jack into your server’s REPL and connect to the browser REPL. You start chatting with some nerdy friends about your latest ClojureScript exploits, and they browse away, looking at your modest web project. You go back to the REPL, and with one command, send all active connections to your app’s latest addition. While this is certainly possible with services such as JSConsole already, Piggieback lets you do it over your own server and in ClojureScript.</p>
+<p>Piggieback lets me connect a Clojure nREPL to a ClojureScript environment, such as Rhino or the browser (<strong><em>!!!</em></strong>). With the right code in place on the server and the client, I can have a live link to both. The potential power is intoxicating, but Heroku doesn’t use the same version of Leiningen in production as I run locally, meaning it’s only good for local development &amp; testing. Still, it gives the programmer full control from the command line.</p>
+
+<h3><a href="https://devcenter.heroku.com/articles/debugging-clojure">Drawbridge: Heroku REPL</a></h3>
+
+<p>With Drawbridge on the server, the developer can connect via HTTP to a REPL on the live server environment.</p>
 
 <h3><a href="https://github.com/cgrand/enlive">Enlive: HTML templating, transformed</a></h3>
 
