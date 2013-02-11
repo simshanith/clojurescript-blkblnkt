@@ -16,7 +16,6 @@
   :plugins [[lein-cljsbuild "0.2.8"]
             [lein-ring "0.8.2"]]
   :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
-  :hooks [leiningen.cljsbuild]
   :cljsbuild { 
     :builds {
       :main {
@@ -24,7 +23,7 @@
         :compiler
         {
           :output-to "resources/public/js/cljs.js"
-          :optimizations :simple
+          :optimizations :advanced
           :pretty-print true
         }
         :jar true
