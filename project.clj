@@ -24,7 +24,7 @@
         {
           :output-to "resources/public/js/cljs.js"
           :optimizations :advanced
-          :pretty-print true
+          :pretty-print false
         }
         :jar true
       }
