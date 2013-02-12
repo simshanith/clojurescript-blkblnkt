@@ -1,15 +1,15 @@
-(ns hello-clojurescript
+(ns simCljs.app
   (:require 
 ;;   [clojure.browser.repl :as repl]
    [goog.net.Jsonp :as goog.net.Jsonp]
    [goog.array :as goog.array]
-   ))
+   [jayq.core :as jq]))
 	
 ;;(repl/connect "http://localhost:9000/repl")
 
 (defn photoSrcs [elem]
-  (if (and (.-photos elem) (> (.-length (.-photos elem)) 0))
-    (goog.array.map (.-photos elem) photoSrcs)
+  (if (and (.isArray js/_ (aget elem "photos")) (> (.-length (aget elem "photos")) 0))
+    (goog.array.map (aget elem "photos") photoSrcs)
     (aget elem "photo-url-1280")))
 
 (def myTumblrData (atom (js/Array)))
@@ -33,3 +33,6 @@
 (.addEventListener clickable "click" get-tumblr-data)
 
 (defn ^:export showData [] @myTumblrData)
+
+(defn ^:export externTest []
+  (.attr (js/$ "#go") "data-sim"))
