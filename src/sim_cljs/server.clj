@@ -25,7 +25,7 @@
 (def app
   (handler/site app-routes))
 
-(println "Server restarted.")
+(println "Server reloaded.")
 
 (defn piggybackBrowserREPL []
   (cemerick.piggieback/cljs-repl

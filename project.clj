@@ -18,7 +18,8 @@
                  [jayq "2.2.0"]]
   :plugins [[lein-cljsbuild "0.3.0"]
             [lein-ring "0.8.2"]]
-  :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
+  :repl-options {:init (def server (future (-main 3000)))
+                 :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
   :cljsbuild {
     :repl-listen-port 9000
     :repl-launch-commands
@@ -36,4 +37,5 @@
           :optimizations :advanced},
        :jar true}]}
   :ring {:handler sim-cljs.server/app}
+  :aliases {"phantom" ["trampoline" "cljsbuild" "repl-launch" "phantom" "http://localhost:3000"]}
   :main sim-cljs.server)
