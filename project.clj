@@ -4,7 +4,7 @@
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [org.clojure/clojurescript "0.0-1552"]
-                [org.clojure/google-closure-library "0.0-2029-2"]
+                 [org.clojure/google-closure-library "0.0-2029-2"]
                  [aleph "0.3.0-beta11"]
                  [ring "1.1.8"]
                  [compojure "1.1.5"]
@@ -13,6 +13,7 @@
                  [ring-basic-authentication "1.0.1"]
 ;;                 [enfocus "1.0.0-beta3"]
 ;;                 [domina "1.0.1"]
+                 [org.clojure/tools.nrepl "0.2.1"]
                  [com.cemerick/piggieback "0.0.2"]
                  [jayq "2.2.0"]]
   :plugins [[lein-cljsbuild "0.3.0"]
