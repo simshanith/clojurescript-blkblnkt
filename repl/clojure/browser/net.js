@@ -7,10 +7,10 @@ goog.require('goog.net.EventType');
 goog.require('goog.net.XhrIo');
 goog.require('clojure.browser.event');
 clojure.browser.net._STAR_timeout_STAR_ = 10000;
-clojure.browser.net.event_types = cljs.core.into.call(null,cljs.core.ObjMap.EMPTY,cljs.core.map.call(null,(function (p__3862){
-var vec__3863 = p__3862;
-var k = cljs.core.nth.call(null,vec__3863,0,null);
-var v = cljs.core.nth.call(null,vec__3863,1,null);
+clojure.browser.net.event_types = cljs.core.into.call(null,cljs.core.ObjMap.EMPTY,cljs.core.map.call(null,(function (p__3856){
+var vec__3857 = p__3856;
+var k = cljs.core.nth.call(null,vec__3857,0,null);
+var v = cljs.core.nth.call(null,vec__3857,1,null);
 return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null,k.toLowerCase()),v], true);
 }),cljs.core.merge.call(null,cljs.core.js__GT_clj.call(null,goog.net.EventType))));
 clojure.browser.net.IConnection = {};
@@ -313,10 +313,10 @@ if(or__3824__auto____$1)
 });
 goog.net.XhrIo.prototype.clojure$browser$event$EventType$ = true;
 goog.net.XhrIo.prototype.clojure$browser$event$EventType$event_types$arity$1 = (function (this$){
-return cljs.core.into.call(null,cljs.core.ObjMap.EMPTY,cljs.core.map.call(null,(function (p__3864){
-var vec__3865 = p__3864;
-var k = cljs.core.nth.call(null,vec__3865,0,null);
-var v = cljs.core.nth.call(null,vec__3865,1,null);
+return cljs.core.into.call(null,cljs.core.ObjMap.EMPTY,cljs.core.map.call(null,(function (p__3858){
+var vec__3859 = p__3858;
+var k = cljs.core.nth.call(null,vec__3859,0,null);
+var v = cljs.core.nth.call(null,vec__3859,1,null);
 return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null,k.toLowerCase()),v], true);
 }),cljs.core.merge.call(null,cljs.core.js__GT_clj.call(null,goog.net.EventType))));
 });
@@ -337,10 +337,10 @@ goog.net.XhrIo.prototype.clojure$browser$net$IConnection$transmit$arity$6 = (fun
 this$.setTimeoutInterval(timeout);
 return this$.send(uri,method,content,headers);
 });
-clojure.browser.net.xpc_config_fields = cljs.core.into.call(null,cljs.core.ObjMap.EMPTY,cljs.core.map.call(null,(function (p__3866){
-var vec__3867 = p__3866;
-var k = cljs.core.nth.call(null,vec__3867,0,null);
-var v = cljs.core.nth.call(null,vec__3867,1,null);
+clojure.browser.net.xpc_config_fields = cljs.core.into.call(null,cljs.core.ObjMap.EMPTY,cljs.core.map.call(null,(function (p__3860){
+var vec__3861 = p__3860;
+var k = cljs.core.nth.call(null,vec__3861,0,null);
+var v = cljs.core.nth.call(null,vec__3861,1,null);
 return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null,k.toLowerCase()),v], true);
 }),cljs.core.js__GT_clj.call(null,goog.net.xpc.CfgFields)));
 /**
@@ -466,16 +466,16 @@ return (new goog.net.xpc.CrossPageChannel(goog.json.parse(config)));
 }
 });
 var xpc_connection__1 = (function (config){
-return (new goog.net.xpc.CrossPageChannel(cljs.core.reduce.call(null,(function (sum,p__3871){
-var vec__3872 = p__3871;
-var k = cljs.core.nth.call(null,vec__3872,0,null);
-var v = cljs.core.nth.call(null,vec__3872,1,null);
+return (new goog.net.xpc.CrossPageChannel(cljs.core.reduce.call(null,(function (sum,p__3865){
+var vec__3866 = p__3865;
+var k = cljs.core.nth.call(null,vec__3866,0,null);
+var v = cljs.core.nth.call(null,vec__3866,1,null);
 var temp__3971__auto__ = cljs.core._lookup.call(null,clojure.browser.net.xpc_config_fields,k,null);
 if(cljs.core.truth_(temp__3971__auto__))
 {var field = temp__3971__auto__;
-var G__3873 = sum;
-(G__3873[field] = v);
-return G__3873;
+var G__3867 = sum;
+(G__3867[field] = v);
+return G__3867;
 } else
 {return sum;
 }
