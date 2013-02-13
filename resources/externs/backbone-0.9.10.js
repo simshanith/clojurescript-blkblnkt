@@ -1,5 +1,5 @@
 /**
- * @fileoverview Externs for backbone-0.9.2.js
+ * @fileoverview Externs for backbone-0.9.10.js
  *
  * built with http://www.dotnetwise.com/Code/Externs/index.html
  * see also: http://blog.dotnetwise.com/2009/11/closure-compiler-externs-extractor.html

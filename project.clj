@@ -33,7 +33,7 @@
        :compiler
          {:pretty-print true,
           :output-to "resources/public/js/cljs.js",
-          :externs ["resources/externs/externs.js"],
+          :externs ["resources/externs/jquery-1.8.js", "resources/externs/underscore-1.4.3.js", "resources/externs/backbone-0.9.10.js"],
           :optimizations :whitespace},
        :jar true}]}
   :ring {:handler sim-cljs.server/app}
