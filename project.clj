@@ -31,10 +31,10 @@
      [{:source-paths ["src-cljs"],
        :id "main",
        :compiler
-         {:pretty-print false,
+         {:pretty-print true,
           :output-to "resources/public/js/cljs.js",
           :externs ["resources/externs/externs.js"],
-          :optimizations :advanced},
+          :optimizations :whitespace},
        :jar true}]}
   :ring {:handler sim-cljs.server/app}
   :aliases {"phantom" ["trampoline" "cljsbuild" "repl-launch" "phantom" "http://localhost:3000"]}

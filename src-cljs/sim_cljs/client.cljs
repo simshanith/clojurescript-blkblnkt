@@ -3,9 +3,12 @@
    [clojure.browser.repl :as repl]
    [goog.net.Jsonp :as goog.net.Jsonp]
    [goog.array :as goog.array]
-   [jayq.core :as jq]))
+   ;;[jayq.core :as jq]
+   ))
 	
-(if (.has js/_ js/window "clojure") (repl/connect "http://localhost:9000/repl"))
+;;(if (.has js/_ js/window "clojure") 
+  (repl/connect "http://localhost:9000/repl")
+  ;;)
 
 (defn photoSrcs [elem]
   (if (and (.isArray js/_ (aget elem "photos")) (> (.-length (aget elem "photos")) 0))
@@ -32,5 +35,5 @@
 
 (defn ^:export showData [] @myTumblrData)
 
-(defn ^:export externTest []
-  (.attr (js/$ "#go") "data-sim"))
+;;(defn ^:export externTest []
+;;  (.attr (js/$ "#go") "data-sim"))
