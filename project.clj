@@ -19,30 +19,26 @@
                  [jayq "2.2.0"]]
   :plugins [[lein-cljsbuild "0.3.0"]
             [lein-ring "0.8.2"]]
-
+  :repl-options
+    {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
   :profiles
   {:server-repl
    {:repl-options
-    {:init (def server (future (-main 3000)))
-     :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}
-  :phantomjs-repl {}}
-;; (def phantomjs (future (cljsbuild.util/sh {:shell ["phantomjs" "phantom/repl.js" "http://localhost:3000"] :stdout ".repl-phantom-out" :stderr ".repl-phantom-err"})))
-  :cljsbuild {
-    :repl-listen-port 9000
-    :repl-launch-commands
-      {"phantom" ["phantomjs"
-                  "phantom/repl.js"
-                  :stdout ".repl-phantom-out"
-                  :stderr ".repl-phantom-err"]}
-    :builds
-     [{:source-paths ["src-cljs"],
-       :id "main",
-       :compiler
-         {:pretty-print true,
-          :output-to "resources/public/js/cljs.js",
-          :externs ["resources/externs/jquery-1.8.js", "resources/externs/underscore-1.4.3.js", "resources/externs/backbone-0.9.10.js"],
-          :optimizations :whitespace},
-       :jar true}]}
+    {:init (def server (future (-main 3000)))}}
+   :browser-repl 
+   {:repl-options
+     {:init (sim-cljs.server/piggiebackBrowserREPL)}}}
+  :cljsbuild {:builds
+    [{:jar true
+      :source-paths ["src-cljs"]
+      :id "main"
+      :compiler
+      {:pretty-print true
+       :output-to "resources/public/js/cljs.js"
+       :externs ["resources/externs/jquery-1.8.js" "resources/externs/underscore-1.4.3.js" "resources/externs/backbone-0.9.10.js"]
+       :optimizations :whitespace}}]}
   :ring {:handler sim-cljs.server/app}
-  :aliases {"phantom" ["trampoline" "cljsbuild" "repl-launch" "phantom" "http://localhost:3000"]}
+  :aliases 
+  {"server"  ["with-profile" "server-repl" "repl"]
+   "browser" ["with-profile" "browser-repl" "repl"]}
   :main sim-cljs.server)

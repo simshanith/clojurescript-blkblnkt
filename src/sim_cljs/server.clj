@@ -11,7 +11,8 @@
             [ring.middleware.keyword-params :as keyword-params]
             [ring.middleware.nested-params :as nested-params]
             [ring.middleware.session :as session]
-            [ring.middleware.basic-authentication :as basic])
+            [ring.middleware.basic-authentication :as basic]
+            [cljsbuild.util])
   (:gen-class))
 
 (enlive/deftemplate layout "sim_cljs/views/layout.html" [])
@@ -27,10 +28,10 @@
 
 (println "Server reloaded.")
 
-(defn piggybackBrowserREPL []
-  (cemerick.piggieback/cljs-repl
-  :repl-env (doto (cljs.repl.browser/repl-env :port 9000)
-              cljs.repl/-setup)))
+(defn piggiebackBrowserREPL []
+  (let [env (cljs.repl.browser/repl-env :port 9000)]
+    (try 
+      (cemerick.piggieback/cljs-repl :repl-env (doto env cljs.repl/-setup)))))
 
 (def drawbridge-handler
   (-> (cemerick.drawbridge/ring-handler)
