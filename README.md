@@ -1,6 +1,20 @@
 # Clojure + ClojureScript Overview
 This is an example Clojure web app that serves compiled ClojureScript, bringing a modern lisp to both server & browser.
 
+# Prerequisites
+
+* Leiningen 2.0 (`brew install lein` then `lein upgrade`)
+* PhantomJS (`brew install phantomjs`)
+
+# Usage
+
+1) Clone the repo and `cd` into the project dir.
+2) Run `lein server` to start a REPL and launch the server on port 3000.
+3) Open a new terminal and run `lein browser` to start the ClojureScript REPL server, listening on port 9000.
+4) Open a third terminal and run `phantomjs phantom/repl.js localhost:3000` to connect to the ClojureScript REPL.
+
+Code away! Two nREPL servers are running, accessible to Emacs or your preferred development environment (as well as the terminal they were launched from). console.log()s in the browser environment will appear in the phantomjs terminal.
+
 #### _“Science without Philosophy is blind...”_
 Clojure builds useful abstractions around discrete problemspaces. This design philosophy allows for highly modular components that provide utility for many programming projects. These components are easily distributed as projects themselves, allowing open source communities to build on top of and within each library.
 
@@ -27,7 +41,7 @@ With Drawbridge on the server, the developer can connect via HTTP to a REPL on t
 ### [Enlive: HTML templating, transformed](https://github.com/cgrand/enlive)
 Enlive is my favorite templating solution, hands down. Instead of forcing some special templating syntax, Enlive takes HTML and produces HTML. Create a static page with placeholders and Lorem Ipsum, and let Enlive replace it with dynamic content in your app. Enlive recognizes both CSS selectors and XPath, and has advanced transformations for wrangling structured data into structured HTML.
 
-##ClojureScript and Google Closure Tools
+## ClojureScript and Google Closure Tools
 ClojureScript is built upon [Google Closure Tools](https://developers.google.com/closure/), implemented using the [Closure Library](https://developers.google.com/closure/library/), and compiled with the [Closure Compiler](https://developers.google.com/closure/compiler/). This provides a surprisingly effective dependency managment solution, well suited for programming with modular components. Google’s rich experience applications such as Search, Gmail, Maps, Docs, Google+, and many others are built with the Closure Library. 
 
 However, it is a totalistic framework: using it alongside traditional, relatively lightweight libraries such as jQuery and Backbone is difficult & cumbersome, not to mention redundant in a network-gobbling way. Google has their own way of doing things, and to adopt Closure in part, you need to swallow it whole. That said, once transitioned to the Closure way, you may have a deeper understanding of how browsers process the DOM & evaluate your scripts.
