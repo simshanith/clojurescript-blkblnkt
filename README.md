@@ -8,10 +8,10 @@ This is an example Clojure web app that serves compiled ClojureScript, bringing 
 
 # Usage
 
-1) Clone the repo and `cd` into the project dir.
-2) Run `lein server` to start a REPL and launch the server on port 3000.
-3) Open a new terminal and run `lein browser` to start the ClojureScript REPL server, listening on port 9000.
-4) Open a third terminal and run `phantomjs phantom/repl.js localhost:3000` to connect to the ClojureScript REPL.
+1. Clone the repo and `cd` into the project dir.
+2. Run `lein server` to start a REPL and launch the server on port 3000.
+3. Open a new terminal and run `lein browser` to start the ClojureScript REPL server, listening on port 9000.
+4. Open a third terminal and run `phantomjs phantom/repl.js localhost:3000` to connect to the ClojureScript REPL.
 
 Code away! Two nREPL servers are running, accessible to Emacs or your preferred development environment (as well as the terminal they were launched from). console.log()s in the browser environment will appear in the phantomjs terminal.
 
