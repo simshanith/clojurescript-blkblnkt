@@ -15,11 +15,18 @@
 ;;                 [domina "1.0.1"]
                  [org.clojure/tools.nrepl "0.2.1"]
                  [com.cemerick/piggieback "0.0.2"]
+                 [cljsbuild "0.3.0"]
                  [jayq "2.2.0"]]
   :plugins [[lein-cljsbuild "0.3.0"]
             [lein-ring "0.8.2"]]
-  :repl-options {:init (def server (future (-main 3000)))
-                 :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
+
+  :profiles
+  {:server-repl
+   {:repl-options
+    {:init (def server (future (-main 3000)))
+     :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}
+  :phantomjs-repl {}}
+;; (def phantomjs (future (cljsbuild.util/sh {:shell ["phantomjs" "phantom/repl.js" "http://localhost:3000"] :stdout ".repl-phantom-out" :stderr ".repl-phantom-err"})))
   :cljsbuild {
     :repl-listen-port 9000
     :repl-launch-commands
