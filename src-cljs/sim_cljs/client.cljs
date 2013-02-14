@@ -35,5 +35,5 @@
 
 (defn ^:export showData [] @myTumblrData)
 
-;;(defn ^:export externTest []
-;;  (.attr (js/$ "#go") "data-sim"))
+(defn ^:export externTest []
+  (.attr (js/$ "#go") "data-sim"))
