@@ -4,24 +4,22 @@
             [compojure.route :as route]
             [ring.adapter.jetty :as jetty]
             [net.cgrand.enlive-html :as enlive]
-            [cljs.repl.browser]
-            [cemerick.piggieback]
             [cemerick.drawbridge :as drawbridge]
             [ring.middleware.params :as params]
             [ring.middleware.keyword-params :as keyword-params]
             [ring.middleware.nested-params :as nested-params]
             [ring.middleware.session :as session]
             [ring.middleware.basic-authentication :as basic]
-            [clojure.data.json :as json])
+            [cljs.repl.browser]
+            [cemerick.piggieback])
   (:gen-class))
 
-(def header-js-libs ["/js/vendor/modernizr.custom.09566.js"])
-(def footer-js-libs ["//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"
-  "//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.0.0-rc.3/lodash.underscore.min.js"
-  "//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"])
-
-
-
+(def header-js-libs
+  ["/js/vendor/modernizr.custom.09566.js"])
+(def footer-js-libs
+  ["//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"
+   "//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.0.0-rc.3/lodash.underscore.min.js"
+   "//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"])
 (def dependency-check (slurp "resources/public/js/externDependencies.js"))
 
 (enlive/deftemplate layout (enlive/xml-resource "sim_cljs/views/layout.html")
@@ -54,11 +52,6 @@
 
 (println "Server reloaded.")
 
-(defn piggiebackBrowserREPL []
-  (let [env (cljs.repl.browser/repl-env :port 9000)]
-    (try 
-      (cemerick.piggieback/cljs-repl :repl-env (doto env cljs.repl/-setup)))))
-
 (def drawbridge-handler
   (-> (cemerick.drawbridge/ring-handler)
       (keyword-params/wrap-keyword-params)
@@ -80,3 +73,8 @@
 (defn -main [& [port]]
   (let [port (Integer. (or port (System/getenv "PORT") 3000))]
     (jetty/run-jetty (wrap-drawbridge app) {:port port :join? false})))
+
+(defn piggiebackBrowserREPL []
+  (let [env (cljs.repl.browser/repl-env :port 9000)]
+    (try 
+      (cemerick.piggieback/cljs-repl :repl-env (doto env cljs.repl/-setup)))))
