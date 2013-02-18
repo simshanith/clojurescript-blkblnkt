@@ -12,13 +12,39 @@
             [ring.middleware.nested-params :as nested-params]
             [ring.middleware.session :as session]
             [ring.middleware.basic-authentication :as basic]
-            [cljsbuild.util])
+            [clojure.data.json :as json])
   (:gen-class))
 
-(enlive/deftemplate layout "sim_cljs/views/layout.html" [])
+(def header-js-libs ["/js/vendor/modernizr.custom.09566.js"])
+(def footer-js-libs ["//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"
+  "//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.0.0-rc.3/lodash.underscore.min.js"
+  "//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"])
+
+
+
+(def dependency-check (slurp "resources/public/js/externDependencies.js"))
+
+(enlive/deftemplate layout (enlive/xml-resource "sim_cljs/views/layout.html")
+  [header-js footer-js load-check]
+  [:title]
+    (enlive/content "Dynamic App")
+  [:script#headerScripts]
+    (enlive/clone-for [script-src header-js]
+      (enlive/do->
+        (enlive/set-attr :src script-src)
+        (enlive/remove-attr :id)))
+  [:script#footerScripts]
+    (enlive/clone-for [script-src footer-js]
+      (enlive/do->
+        (enlive/set-attr :src script-src)
+        (enlive/remove-attr :id)))
+  [:script#dependencyCheck]
+    (enlive/html-content load-check))
+
+(def app-home (apply str (layout header-js-libs footer-js-libs dependency-check)))
 
 (defroutes app-routes
-  (GET "/" [] (layout))
+  (GET "/" [] app-home)
   (route/resources "/templates/" {:root "sim_cljs/views/"})
   (route/resources "/" {:root "public"})
   (route/not-found "<h1>Page not found</h1>"))
@@ -52,5 +78,5 @@
       (handler req))))
 
 (defn -main [& [port]]
-  (let [port (Integer. (or port (System/getenv "PORT")))]
+  (let [port (Integer. (or port (System/getenv "PORT") 3000))]
     (jetty/run-jetty (wrap-drawbridge app) {:port port :join? false})))

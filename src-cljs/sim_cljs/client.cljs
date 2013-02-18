@@ -19,7 +19,7 @@
 
 (defn handle-json-resp [resp]
   (do
-    (js/alert "doop")
+    (js/alert "Cool! Loaded my 50 most recent tumblr photo posts.")
     (.log js/console resp)
     (.log js/console (swap! myTumblrData
              (fn [_] (if (aget resp "posts")
