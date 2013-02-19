@@ -28,6 +28,8 @@
       (enlive/do->
         (enlive/set-attr :src script-src)
         (enlive/remove-attr :id)))
+  [:style#headerStyle]
+    (enlive/content (slurp "resources/public/css/imageAnimation.css"))
   [:script#dependencyCheck]
     (enlive/html-content load-check))
 

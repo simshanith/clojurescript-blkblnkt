@@ -34,10 +34,10 @@
       :source-paths ["src-cljs"]
       :id "main"
       :compiler
-      {:pretty-print true
+      {:pretty-print false
        :output-to "resources/public/js/cljs.js"
        :externs ["resources/externs/jquery-1.8.js" "resources/externs/underscore-1.4.3.js" "resources/externs/backbone-0.9.10.js"]
-       :optimizations :whitespace}}]}
+       :optimizations :advanced}}]}
   :ring {:handler sim-cljs.server/app}
   :aliases 
   {"server"  ["with-profile" "server-repl" "repl"]
