@@ -44,8 +44,8 @@ img{position: absolute; top: 0; left: 0;}
   }
 }
 img.go{
-  -webkit-animation: doop 8.1378s ease 0s infinite;
-  -moz-animation: doop 8.1378s ease 0s infinite;  
-  -o-animation: doop 8.1378s ease 0s infinite;
-  animation: doop 8.1378s ease 0s infinite;  
+  -webkit-animation: doop 8.1378s ease 0s 5;
+  -moz-animation: doop 8.1378s ease 0s 5;  
+  -o-animation: doop 8.1378s ease 0s 5;
+  animation: doop 8.1378s ease 0s 5;  
 }
