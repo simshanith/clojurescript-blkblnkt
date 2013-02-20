@@ -19,7 +19,8 @@
 ;;                 [domina "1.0.1"]
                  [jayq "2.2.0"]]
   :plugins [[lein-cljsbuild "0.3.0"]
-            [lein-ring "0.8.2"]]
+            [lein-ring "0.8.2"]
+            [lein-marginalia "0.7.1"]]
   :repl-options
     {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
   :profiles

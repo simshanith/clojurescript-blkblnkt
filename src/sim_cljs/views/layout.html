@@ -9,9 +9,15 @@
   <body>
     <h1>Hello World.</h1>
     <h2>Clojure + ClojureScript</h2>
-    <p>testing reload from emacs <code>M-x nrepl</code> connected
-    to <code>lein repl</code></p>
+    <p>This is an HTML file transformed into Clojure data structures, then modified based on app conditions. The source code for the initial static template lives at <a href="/templates/layout.html">/templates/layout.html</a>.</p>
+    <p>As part of the transformations done by Clojure, some CSS &amp; JS files are inlined. They live at <a href="/css/imageAnimation.css">/css/imageAnimation.css</a> &amp; <a href="/js/externDependencies.js">/js/externDependencies.js</a>.</p>
+    <hr />
+    <p>This project includes <code>lein :alias</code>es that allow for easy launching of REPLs connected to different environements.
+      In the cloned project directory, run <code>lein server</code> to launch a REPL and a Compojure web server.
+      Once launched, the server's defining code can be reevaluated with the following command:</p>
     <pre>(require 'sim-cljs.server :reload)</pre>
+    <p>This allows for hotswapping functionality and routing. Running this command also slurps in updated versions of static resources, like this file.</p>
+    <p>The button below is bound with some ClojureScript code. Click it to see some animations on photos from my tumblr.</p>
     <button id="go" data-sim="ClojureScript rules.">Load some photos from tumblr.</button>
     <script id="dependencyCheck" type="text/javascript"></script>
   </body>

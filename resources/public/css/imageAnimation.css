@@ -1,51 +1,64 @@
 img{position: absolute; top: 0; left: 0;}
 @-webkit-keyframes doop {
     0% {
-      -webkit-transform: translateY(0px);
+      opacity: .25;
+      -webkit-transform: translateY(-2000px);
     }
     50% {
+      opacity: .75;
       -webkit-transform: translateY(2000px);
     }
     100% {
-      -webkit-transform: translateY(0px);
+      opacity: .25;
+      -webkit-transform: translateY(-2000px);
     }
   }
 @-moz-keyframes doop {
   0% {
-    -moz-transform: translateY(0px);
+    opacity: .25;
+    -moz-transform: translateY(-2000px);
   }
   50% {
+    opacity: .75;
     -moz-transform: translateY(2000px);
   }
   100% {
-    -moz-transform: translateY(0px);
+    opacity: .25;
+    -moz-transform: translateY(-2000px);
   }
 }
 @-o-keyframes doop {
   0% {
-    -o-transform: translateY(0px);
+    opacity: .25;
+    -o-transform: translateY(-2000px);
   }
   50% {
+    opacity: .75;
     -o-transform: translateY(2000px);
   }
   100% {
-    -o-transform: translateY(0px);
+    opacity: .25;
+    -o-transform: translateY(-2000px);
   }
 }
 @keyframes doop {
   0% {
-    transform: translateY(0px);
+    opacity: .25;
+    transform: translateY(-2000px);
   }
   50% {
+    opacity: .75;
     transform: translateY(2000px);
   }
   100% {
-    transform: translateY(0px);
+    opacity: .25;
+    transform: translateY(-2000px);
   }
 }
 img.go{
-  -webkit-animation: doop 8.1378s ease 0s 5;
-  -moz-animation: doop 8.1378s ease 0s 5;  
-  -o-animation: doop 8.1378s ease 0s 5;
-  animation: doop 8.1378s ease 0s 5;  
+  -webkit-animation: doop 8.138s ease 0s 1;
+  -moz-animation: doop 8.138s ease 0s 1;  
+  -o-animation: doop 8.138s ease 0s 1;
+  animation: doop 8.138s ease 0s 1;
+
 }
