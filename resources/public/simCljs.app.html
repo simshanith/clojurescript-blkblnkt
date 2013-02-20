@@ -3047,15 +3047,18 @@ to advanced, tho if properly using <code>:advanced</code> compilation, the
 </td><td class="codes"></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(comment
   (if (.has js/_ js/window &quot;clojure&quot;) 
-    (repl/connect &quot;http://localhost:9000/repl&quot;)))</pre></td></tr><tr><td class="docs"><p>Wrapper for console.log that gracefully fails on <code>console</code>-less browsers</p>
+    (repl/connect &quot;http://localhost:9000/repl&quot;)))</pre></td></tr><tr><td class="docs"><p>Wrapper for console.log that gracefully fails on <code>console</code>-less browsers. Yay tail recursion.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn ^:export safeLog
   [&amp; logs]
-  (when (and (.has js/_ js/window &quot;console&quot;)
+  (when (and (seq logs)
+             (.has js/_ js/window &quot;console&quot;)
              (.isFunction js/_ (aget js/console &quot;log&quot;)))
-    (apply #(.log js/console %) logs)))</pre></td></tr><tr><td class="docs"><p>Extracts relevant data from tumblr post object. Returns a string or JS array of strings.</p>
+    (.log js/console (first logs))
+    (recur (next logs))))</pre></td></tr><tr><td class="docs"><p>Extracts relevant data from tumblr post object. Returns a string or JS array of strings.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn photoSrcs
   [elem]
-  (if (and (.isArray js/_ (aget elem &quot;photos&quot;)) (&gt; (.-length (aget elem &quot;photos&quot;)) 0))
+  (if (and (.isArray js/_ (aget elem &quot;photos&quot;))
+           (&gt; (.-length (aget elem &quot;photos&quot;)) 0))
     (goog.array.map (aget elem &quot;photos&quot;) photoSrcs)
     (aget elem &quot;photo-url-1280&quot;)))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(def myTumblrData (atom (js/Array)))</pre></td></tr><tr><td class="docs"><p>Given an unattached <code>&lt;img /&gt;</code> wrapped in jQuery, attach it to the DOM and remove it after ~13 seconds.</p>

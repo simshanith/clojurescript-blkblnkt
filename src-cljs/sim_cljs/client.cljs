@@ -25,16 +25,19 @@
 
 
 (defn ^:export safeLog
-  "Wrapper for console.log that gracefully fails on `console`-less browsers"
+  "Wrapper for console.log that gracefully fails on `console`-less browsers. Yay tail recursion."
   [& logs]
-  (when (and (.has js/_ js/window "console")
+  (when (and (seq logs)
+             (.has js/_ js/window "console")
              (.isFunction js/_ (aget js/console "log")))
-    (apply #(.log js/console %) logs)))
+    (.log js/console (first logs))
+    (recur (next logs))))
 
 (defn photoSrcs
   "Extracts relevant data from tumblr post object. Returns a string or JS array of strings."
   [elem]
-  (if (and (.isArray js/_ (aget elem "photos")) (> (.-length (aget elem "photos")) 0))
+  (if (and (.isArray js/_ (aget elem "photos"))
+           (> (.-length (aget elem "photos")) 0))
     (goog.array.map (aget elem "photos") photoSrcs)
     (aget elem "photo-url-1280")))
 

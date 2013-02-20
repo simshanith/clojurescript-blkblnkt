@@ -60,5 +60,5 @@ img.go{
   -moz-animation: doop 8.138s ease 0s 1;  
   -o-animation: doop 8.138s ease 0s 1;
   animation: doop 8.138s ease 0s 1;
-
+  opacity: .75;
 }
