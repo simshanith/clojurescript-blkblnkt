@@ -1,8 +1,6 @@
 // ## Dependency Management with yepnope.js
 // http://yepnopejs.com
 
-// Set the error timeout really low. CDNs should be fast; localhost will be fast. Default is `1e4` (10,000).
-yepnope.errorTimeout = 1e3;
 yepnope([{
 	// ### jQuery & Underscore / LoDash.
 	// Test if there's a network connection. If there is, download from CDN.
