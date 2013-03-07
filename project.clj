@@ -38,7 +38,20 @@
       {:pretty-print false
        :output-to "resources/public/js/cljs.js"
        :externs ["resources/externs/jquery-1.8.js" "resources/externs/underscore-1.4.3.js" "resources/externs/backbone-0.9.10.js"]
-       :optimizations :advanced}}]}
+       :optimizations :advanced}}
+     {:jar true
+      :source-paths ["src-cljs"]
+      :id "dev"
+      :compiler
+      {:pretty-print true
+       :output-to "resources/public/js/cljs.dev.js"}}
+     {:jar true
+      :source-paths ["src-cljs"]
+      :id "simple"
+      :compiler
+      {:pretty-print true
+       :output-to "resources/public/js/cljs.simple.js"
+       :optimizations :simple}}]}
   :ring {:handler sim-cljs.server/app}
   :aliases 
   {"server"  ["with-profile" "server-repl" "repl"]
