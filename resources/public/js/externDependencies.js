@@ -27,7 +27,7 @@ yepnope([{
 	// ### Compiled ClojureScript. Includes jayq, which depends on jQuery.
 	// Last in the yepnope array, /js/cljs.js contains application code.
 	// Because it's last, it will only execute after all other loads have finished, ensuring dependencies have loaded.
-	load: '/js/cljs.js',
+	load: '/js/cljs.simple.js',
 	complete: function(){
 		// Print script loading completion message.
 		window.console && _.isFunction(console.log) && console.log("All scripts loaded.");

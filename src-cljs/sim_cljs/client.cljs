@@ -1,7 +1,7 @@
 (ns simCljs.app
   (:require
    ;; Only include Browser REPL on simple optimizations, local environment
-   ;;[clojure.browser.repl :as repl]
+   [clojure.browser.repl :as repl]
    [goog.net.Jsonp :as goog.net.Jsonp]
    [goog.array :as goog.array]
    [jayq.core :as jq]
@@ -19,9 +19,9 @@
 ;; to advanced, tho if properly using `:advanced` compilation, the
 ;; `clojure.browser.repl` namespace should be omitted entirely.
 
-(comment
+;;(comment
   (if (.has js/_ js/window "clojure") 
-    (repl/connect "http://localhost:9000/repl")))
+    (repl/connect "http://localhost:9000/repl"));;)
 
 
 (defn ^:export safeLog
