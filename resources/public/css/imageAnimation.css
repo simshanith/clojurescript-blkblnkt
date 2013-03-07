@@ -1,3 +1,11 @@
+#wrapper {
+  opacity: 1;
+  transition: opacity .5s;
+  -webkit-transition: opacity .5s;
+  -o-transition: opacity .5s;
+  -moz-transition: opacity .5s;
+}
+#wrapper.fadeOut {opacity: 0;}
 img{position: absolute; top: 0; left: 0;}
 @-webkit-keyframes doop {
     0% {

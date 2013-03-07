@@ -55,9 +55,10 @@
   (let [srcList (js->clj srcArray)
         $img (jq/$ (apply str ["<img src=\"" (first srcList) "\" />"]))
         ms-delay 1000]
-    (when (not-empty srcList)
-      (insertPhoto $img)
-      (js/setTimeout #(insertPhotos (rest srcList)) ms-delay))))
+    (if (not-empty srcList)
+      (do (insertPhoto $img)
+          (js/setTimeout #(insertPhotos (rest srcList)) ms-delay))
+      (js/setTimeout #(-> (jq/$ :#wrapper) (jq/remove-class :fadeOut)) 13138))))
 
 
 (defn handle-json-resp
@@ -65,6 +66,7 @@
   [resp]
   (do
     (js/alert "Cool! Loaded my 50 most recent tumblr photo posts.")
+    (-> (jq/$ :#wrapper) (jq/add-class :fadeOut))
     (safeLog resp)
     (safeLog (swap! myTumblrData
                     (fn [_] (if (aget resp "posts")
