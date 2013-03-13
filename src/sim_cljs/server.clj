@@ -64,7 +64,9 @@
                     handler)]
       (handler req))))
 
-(defn -main [& [port]]
+(defn -main 
+  "Run the server. Accepts a port number from args, System environment variable, or defaults to 3000."
+  [& [port]]
   (let [port (Integer. (or port (System/getenv "PORT") 3000))]
     (jetty/run-jetty (wrap-drawbridge app) {:port port :join? false})))
 

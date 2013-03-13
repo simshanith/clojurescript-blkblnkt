@@ -2,8 +2,7 @@
   (:require
    ;; Only include Browser REPL on simple optimizations, local environment
    [clojure.browser.repl :as repl]
-   [goog.net.Jsonp :as goog.net.Jsonp]
-   [goog.array :as goog.array]
+   [shoreleave.remote :as remote]
    [jayq.core :as jq]
    ))
 
@@ -29,19 +28,20 @@
   [& logs]
   (when (and (seq logs)
              (.has js/_ js/window "console")
-             (.isFunction js/_ (aget js/console "log")))
-    (.log js/console (first logs))
+             (.isFunction js/_ (aget js/console "log"))) ;; aget compiles to console["log"]
+    (.log js/console  (clj->js (first logs)))
     (recur (next logs))))
 
 (defn photoSrcs
   "Extracts relevant data from tumblr post object. Returns a string or JS array of strings."
   [elem]
-  (if (and (.isArray js/_ (aget elem "photos"))
-           (> (.-length (aget elem "photos")) 0))
-    (goog.array.map (aget elem "photos") photoSrcs)
-    (aget elem "photo-url-1280")))
+  (if (and (:photos elem)
+           (> (count (:photos elem)) 0))
+    (map photoSrcs (:photos elem))
+    (:photo-url-1280 elem)))
 
-(def myTumblrData (atom (js/Array)))
+(def myTumblrData (atom []))
+(def tumblrIndex (atom 0))
 
 (defn insertPhoto
   "Given an unattached `<img />` wrapped in jQuery, attach it to the DOM and remove it after ~13 seconds."
@@ -51,36 +51,40 @@
 
 (defn insertPhotos
   "Takes a JS array of image sources and recursively calls insertPhoto down the list, with a delay of 1 second."
-  [srcArray]
-  (let [srcList (js->clj srcArray)
-        $img (jq/$ (apply str ["<img src=\"" (first srcList) "\" />"]))
+  [srcList]
+  (let [$img (jq/$ (apply str ["<img src=\"" (first srcList) "\" />"]))
         ms-delay 1000]
     (if (not-empty srcList)
       (do (insertPhoto $img)
           (js/setTimeout #(insertPhotos (rest srcList)) ms-delay))
       (js/setTimeout #(-> (jq/$ :#wrapper) (jq/remove-class :fadeOut)) 13138))))
 
+(declare get-tumblr-data)
+
+;; Event binding.
+(defn bind-button []
+  (-> (jq/$ :button#go) (jq/one :click get-tumblr-data)))
+
 
 (defn handle-json-resp
   "Manages myTumblrData and inserts photos."
   [resp]
-  (do
-    (js/alert "Cool! Loaded my 50 most recent tumblr photo posts.")
+  (when (:posts resp)
     (-> (jq/$ :#wrapper) (jq/add-class :fadeOut))
-    (safeLog resp)
-    (safeLog (swap! myTumblrData
-                    (fn [_] (if (aget resp "posts")
-                             (goog.array.flatten (goog.array.map (aget resp "posts") photoSrcs))))))
-    (insertPhotos @myTumblrData)))
+    (swap! myTumblrData (fn [col] (into col (flatten (map photoSrcs (:posts resp))))))
+    (js/alert (str "Cool! Loaded my " (count @myTumblrData) " most recent tumblr photos."))
+    (insertPhotos @myTumblrData)
+    (swap! tumblrIndex (fn [i] (+ 50 i)))
+    (bind-button)))
 
 (defn get-tumblr-data
   "Requests photo posts from tumblr's API using JSONP."
   []
-  (let [jsonp (goog.net.Jsonp. "http://simloovoo.tumblr.com/api/read/json")]
-    (.send jsonp (js-obj  "type" "photo" "num" 50 "start" 0) handle-json-resp #() "cacheplz")))
-
-;; Event binding.
-(-> (jq/$ :button#go) (jq/on :click get-tumblr-data))
+  (remote/jsonp
+   "http://simloovoo.com/api/read/json"
+   :on-success handle-json-resp
+   :on-timeout (fn [_] (js/alert "Timed out."))
+   :content {:type "photo" :num 50 :start @tumblrIndex}))
 
 (defn ^:export showData
   "Exposes state of myTumblrData."
@@ -90,3 +94,5 @@
   "Dependent on jQuery externs when running in advanced compilation mode, this simple function should return `ClojureScript rules.`"
   []
   (-> (jq/$ :#go) (jq/attr "data-sim")))
+
+(bind-button)
