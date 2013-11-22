@@ -51,3 +51,6 @@ The Google Closure Tools are Java-based, and Google Closure Javascript is a big 
 [ClojureScript](https://github.com/clojure/clojurescript), thankfully, leverages Clojure’s powerful abstractions to reduce the need for boilerplate. The consistent language abstractions keep source files small and familiar, crucial when applications grow in complexity. ClojureScript is best suited for rich experience applications, allowing the developer to harness the full power of Google Closure’s engine with clear, concise Lisp.
 
 _Shane Daniel_
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/simshanith/clojurescript-blkblnkt/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
